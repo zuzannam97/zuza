@@ -1,4 +1,4 @@
-#! /usr/bin/env pythonZUZAAAAAAAAAAAA
+#! /usr/bin/env pythonZUZAAAAAAAAAAAAAAAAAAAAAAZuza
 # -*- coding: utf-8 -*-
 
 # ~/python/04_1_listy.py
