@@ -1,0 +1,52 @@
+#include <iostream.h>
+#include <conio.h>
+#include <math.h>
+ 
+//algorytm sita.
+//http://pl.wikipedia.org/wiki/Sito_Eratostenesa
+ 
+main()
+{
+       clock_t czas_start, czas_koniec, czas_caly ;
+       int zakres,i,j,x; //deklareacja zmiennych o nazwach zakres, i , j, x
+  
+       cout<<"Podaj zakres: ";//Wypisuje na ekranie podaj zakres: 
+       cin>>zakres;//pobieram wpisane ciag do zmiennej zakres
+       int tablica_pierwszych[zakres+1];//deklaruje zmienną o nazwie tablica_pierwszych o wielkoA�ci zakres plus 1
+       czas_start = clock(); //pobranie aktualnego czasu
+        
+        
+       //-------------poczatek liczenia----------------      
+       for (i=2; i <= zakres; i++) //wykonuję pętlę for od i=2 do i = zakres i po kaA1dym wykonaniu pętli i zwiększa się o 1
+       {            
+           tablica_pierwszych[i]=1;//wprowadzamy do tablicy tablica_pierwszych[] dla kazdej liczby z podanego zakresu wartosc 1
+       }
+       for (i=2; i < sqrt(zakres); i++)//petla od 2 do pierwiastek z podanego zakresu 
+       {
+            
+           if(tablica_pierwszych[i]==1)//jesli tablica tablica_pierwszych o indeksie i rA3wna jest jeden to wykonaj poniA1sze instrukcje
+           {
+              for (j=2*i; j<=zakres; j+=i) //*w petli od (2 * i) do podanego zakresu tablice tablica_pierwszych[j] oznaczamy wartoscia 0  czyli ze nie jest liczba pierwsza i zmienna j zwiększana jest o j+i
+              { 
+              tablica_pierwszych[j]=0;//oznaczamy A1e dana liczba nie jest liczbą pierwszą co wiemy z zaA�oA1enia a nie sprawdzamy
+              }
+           }
+      }       
+              
+       for (i=2; i<=zakres; i++) //pętla od i = 2 do i = zakres i po kaA1dym wykonaniu zwiększamy i o wartoA�ć 1
+       {         
+           if (tablica_pierwszych[i]==1) //jesli tablica tablica_pierwszych o indeksie i rA3wna jest jeden
+           {
+           cout<<i<<"\n"; //to pokazuj wynik na ekranie enterowany
+           }
+       }
+        
+       //-------------koniec liczenia ---------------    
+       delete tablica_pierwszych; //usuwam zmienną tablica_pierwszych
+       czas_koniec = clock(); //pobranie aktualnego czasu
+       czas_caly = czas_koniec - czas_start;
+       cout << "Czas obliczen = " << czas_caly / 1000  << " s, dokladniej = " << czas_caly << " mili \n\n";    
+       system("pause");
+        
+       return 0; //zwraca informacje dla systemu A1e program zkoA�czyA� swoje dzialanie poprawnie (nie zawiesiA� się)
+}
