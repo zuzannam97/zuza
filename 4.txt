@@ -1,0 +1,30 @@
+#! /usr/bin/env python
+# -*- coding: utf-8 -*-
+
+
+
+import math  # do³¹czamy bibliotekê matematyczn¹
+
+op = "t"  # deklarujemy i inicjujemy zmienn¹ pomocnicz¹
+while op != "n":  # dopóki wartoœæ zmiennej op jest inna ni¿ znak "n"
+    a, b, c = input("Podaj 3 boki trójk¹ta (oddzielone przecinkami): ")
+    # a, b, c = [int(x) for x in raw_input("Podaj 3 boki trójk¹ta (oddzielone spacjami): ").split()]
+
+    if a + b > c and a + c > b and b + c > a:  # warunek z³o¿ony
+        print "Z podanych boków mo¿na zbudowaæ trójk¹t."
+        # czy boki spe³niaj¹ warunki trójk¹ta prostok¹tnego?
+        if ((a**2 + b**2) == c**2 or (a**2 + c**2) == b**2 or (b**2 + c**2) == a**2):
+            print "Do tego prostok¹tny!"
+
+        # na wyjœciu mo¿emy wyprowadzaæ wyra¿enia
+        print "Obwód wynosi:", (a + b + c)
+        p = 0.5 * (a + b + c)  # obliczmy wspó³czynnik wzoru Herona
+        # liczymy pole ze wzoru Herona
+        P = math.sqrt(p * (p - a) * (p - b) * (p - c))
+        print "Pole wynosi:", P
+        op = "n"  # ustawiamy zmienn¹ na "n", aby wyjœæ z pêtli while
+    else:
+        print "Z podanych odcinków nie mo¿na utworzyæ trójk¹ta prostok¹tnego."
+        op = raw_input("Spróbujesz jeszcze raz (t/n): ")
+
+print "Do zobaczenia..."
